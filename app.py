@@ -21,9 +21,10 @@ def index():
     if request.method == "POST":
 
         url = request.form["url"]
-        print(url)
+        # print(url)
+        print("extractinggg")
         obj = FeatureExtraction(url)
-        print("Debug")
+        print("complete extract")
         x = np.array(obj.getFeaturesList()).reshape(1,30) 
 
         y_pred =gbc.predict(x)[0]

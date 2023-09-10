@@ -19,29 +19,49 @@
 
 <body>
     
-<div class=" container">
+<!-- <div class=" container">
     <div class="col">
         <div class="form col-md" id="form1">
             <br>
             <form action="/" method="post" style="justify-content: center; align-items: center;display: flex; flex-direction: column;">
-                <h2 style="padding: 30px;">PHISHING URL DETECTION</h2>
+                <h2 style="margin-bottom: 30px;">PHISHING URL DETECTION</h2>
                 <input type="text" class="form__input" name ='url' id="url" placeholder="Enter URL" required="" />
                 <button style="margin-top: 20px;" class="button" role="button" id="my-button" onclick="handleClick()">Check here</button>
             </form>
            
     </div>
-    <div id="loading-screen" style="display: {{display}}">Loading...\</div>
     <div class="col-md" id="form2" style="justify-content: center; align-items: center;display: flex; flex-direction: column;">
         
         <br>
-        <h6 class = "right "><a href= {{ url }} target="_blank">{{ url }}</a></h6>
+        <h6><a href= {{ url }} target="_blank" class="text">{{ url }}</a></h6>
            
         <br>
-        <h3 id="prediction"></h3>
+        <h3 id="prediction" class="text_predict"></h3>
         <button class="button2" id="button2" role="button" onclick="window.open('{{url}}')" target="_blank" >Still want to Continue</button>
         <button class="button1" id="button1" role="button"  onclick="window.open('{{url}}')" target="_blank">Continue</button>
     </div> 
+</div> -->
+
+<div class="col" style="justify-content: center; align-items: center;display: flex; flex-direction: column;">
+    <h2 style="margin-bottom: 100px; color:bisque">PHISHING URL DETECTION</h2>
 </div>
+<form action="/" method="post" class="opened">
+    <input type="search" class="input" name ='url' id="url" placeholder="Enter URL" required="" />
+    <button role="button" id="my-button" onclick="handleClick()">
+      <span class="fontawesome-search"></span>
+    </button>
+  </form>
+  <div id="loading-screen" style="display: {{display}}"></div>
+
+  <div class="col-md" id="form2" style="justify-content: center; align-items: center;display: flex; flex-direction: column; margin-top: 50px;">
+        
+    <br>
+    <h6><a href= {{ url }} target="_blank" class="text">{{ url }}</a></h6>
+       
+    <br>
+    <h3 id="prediction" class="text_predict"></h3>
+</div> 
+
 <br>
 </div>
 
@@ -58,13 +78,19 @@
 
     
     <script>
+        // https://dribbble.com/shots/2308755-Search-Transform-Principle-Freebie
 
-            function handleClick(){
+
+       
+    
+            function handleClick()
+            {
                 if (document.getElementById("url").value !== ""){
                     document.getElementById("loading-screen").style.display='flex'
+                    // alert(document.getElementById("url").value);
                 }
             }
-        
+
             let x = '{{xx}}';
             let num = x*100;
             if (0<=x && x<0.50){
@@ -72,14 +98,12 @@
             }
             let txtx = num.toString();
             if(x<=1 && x>=0.50){
-                var label = "Website is "+txtx +"% safe to use...";
+                var label = "Website is "+txtx +"% legitimate and safe to use.";
                 document.getElementById("prediction").innerHTML = label;
-                document.getElementById("button1").style.display="block";
             }
             else if (0<=x && x<0.50){
-                var label = "Website is "+txtx +"% unsafe to use..."
+                var label = "Website is "+txtx +"% phishing. You should carefully consider your decision. \nThis website could be harmful and steal your important information."
                 document.getElementById("prediction").innerHTML = label ;
-                document.getElementById("button2").style.display="block";
             }
         //     document
         // .getElementById("my-button")
