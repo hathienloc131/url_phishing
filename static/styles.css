@@ -288,3 +288,11 @@ form.opened button {
   width:40%;
   text-align: center;
 }
+
+.legal {
+  color:rgb(140, 240, 133)
+}
+
+.phishing {
+  color:rgb(167, 17, 17)
+}
